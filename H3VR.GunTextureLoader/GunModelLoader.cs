@@ -14,6 +14,8 @@ namespace H3VR.GunModelLoader
     {
         private readonly Dictionary<string, Mesh> MeshCache =
             new Dictionary<string, Mesh>(StringComparer.InvariantCultureIgnoreCase);
+        private readonly Dictionary<string, AssetBundle> AssetBundleCache =
+           new Dictionary<string, AssetBundle>(StringComparer.InvariantCultureIgnoreCase);
 
         private readonly Dictionary<string, string> MeshPaths =
             new Dictionary<string, string>(StringComparer.InvariantCultureIgnoreCase);
@@ -75,8 +77,10 @@ namespace H3VR.GunModelLoader
                             Logger.LogDebug($"Loading {path}");
                             if (!MeshCache.TryGetValue(MeshName, out var Mesh))
                             {
-                            //Mesh = MeshCache[MeshName] = new Mesh();
-                            var meshAssetBundle = AssetBundle.LoadFromFile(path);
+                            Mesh = MeshCache[MeshName] = new Mesh();
+                            //AssetBundleCache = AssetBundleCache[MeshName] = new AssetBundle();
+                            if (!AssetBundleCache.TryGetValue(MeshName, out var meshAssetBundle))
+                                meshAssetBundle = AssetBundleCache[MeshName] = AssetBundle.LoadFromFile(path);
                             var listOfAssetNames = meshAssetBundle.GetAllAssetNames();
                             foreach (var assetNames in listOfAssetNames)
                             {
