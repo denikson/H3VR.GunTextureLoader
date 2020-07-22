@@ -66,7 +66,7 @@ namespace H3VR.GunModelLoader
             foreach (var objAsset in obj.Assets)
                 if (objAsset is GameObject go)
                 {
-                    var mrs = go.GetComponentsInChildren<MeshRenderer>();
+                    var mrs = go.GetComponentsInChildren<MeshFilter>();
                     foreach (var mesh in mrs)
                         {
                             var MeshName = mesh.name;
@@ -88,12 +88,17 @@ namespace H3VR.GunModelLoader
 
                                         var meshAsset = meshAssetBundle.LoadAsset<Mesh>(assetNames);
 
+                                        mesh.mesh = meshAsset;
+                                        mesh.sharedMesh = meshAsset;
+                                     
+                                        Logger.LogDebug($"LOADED ASSETS: {assetNames}");
+                                        break;
                                     }
 
 
 
                                 }
-                                Logger.LogDebug($"LOADED ASSETS: {assetNames}");
+
                             }
                       
                         }
