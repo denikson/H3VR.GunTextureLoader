@@ -80,10 +80,22 @@ namespace H3VR.GunModelLoader
                             var listOfAssetNames = meshAssetBundle.GetAllAssetNames();
                             foreach (var assetNames in listOfAssetNames)
                             {
+                                var modelsToLoad = Path.GetExtension(assetNames);
+                                
+                                if (modelsToLoad == ".blend"|| modelsToLoad == ".obj" ||modelsToLoad== ".fbx"){
+                                    if(Path.GetFileNameWithoutExtension(assetNames) == MeshName)
+                                    {
 
+                                        var meshAsset = meshAssetBundle.LoadAsset<Mesh>(assetNames);
+
+                                    }
+
+
+
+                                }
                                 Logger.LogDebug($"LOADED ASSETS: {assetNames}");
-
                             }
+                      
                         }
 
                         }
