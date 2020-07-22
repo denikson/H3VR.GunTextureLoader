@@ -28,19 +28,6 @@ namespace H3VR.GunTextureLoader
             InitWatcher();
 
             ResourceRedirection.RegisterAssetLoadedHook(HookBehaviour.OneCallbackPerResourceLoaded, ReplaceTextures);
-            // ResourceRedirection.RegisterAssetLoadedHook(HookBehaviour.OneCallbackPerResourceLoaded, context =>
-            // {
-            //     Logger.LogInfo(
-            //         $"Asset '{context.Parameters.Name}' LoadType: {context.Parameters.LoadType} Type: {context.Parameters.Type} Loaded items: {context.Assets.Length}, first item type: {context.Asset?.GetType()}");
-            //
-            //     if (context.Asset != null && context.Asset is GameObject go)
-            //     {
-            //         Logger.LogInfo($"Got asset {go}");
-            //         var mrs = go.GetComponentsInChildren<MeshRenderer>();
-            //         foreach (var meshRenderer in mrs)
-            //             Logger.LogInfo($"  - {meshRenderer} => {meshRenderer.material.mainTexture}");
-            //     }
-            // });
         }
 
         private void LoadTexturePaths()
