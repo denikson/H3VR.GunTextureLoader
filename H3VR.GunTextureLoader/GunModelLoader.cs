@@ -26,8 +26,10 @@ namespace H3VR.GunModelLoader
             modelStorePath = Config.Bind("Paths", "ModelsStore", "GunModels", "Path where Models are stored.");
             modelStorePath.SettingChanged += (sender, args) => InitWatcher();
             InitWatcher();
-
+            //var meshesDir = Path.Combine(Paths.GameRootPath, modelStorePath.Value);
             ResourceRedirection.RegisterAssetLoadedHook(HookBehaviour.OneCallbackPerResourceLoaded, ReplaceModels);
+
+
         }
 
         private void LoadModelPaths()
@@ -37,7 +39,7 @@ namespace H3VR.GunModelLoader
             MeshPaths.Clear();
             Directory.CreateDirectory(modPath);
 
-            foreach (var file in Directory.GetFiles(modPath, "*.obj", SearchOption.AllDirectories))
+            foreach (var file in Directory.GetFiles(modPath, "*.assetbundlemsh", SearchOption.AllDirectories))
                 MeshPaths[Path.GetFileNameWithoutExtension(file)] = file;
             Logger.LogInfo($"Found {MeshPaths.Count} models!");
         }
@@ -51,7 +53,7 @@ namespace H3VR.GunModelLoader
             }
 
             LoadModelPaths();
-            watcher = new FileSystemWatcher(modelStorePath.Value, "*.obj") {IncludeSubdirectories = true};
+            watcher = new FileSystemWatcher(modelStorePath.Value, "*.assetbundlemsh") {IncludeSubdirectories = true};
             watcher.Changed += (sender, args) =>
             {
                 Logger.LogInfo("Files in Model path changed, reloading!");
@@ -73,9 +75,9 @@ namespace H3VR.GunModelLoader
                             Logger.LogDebug($"Loading {path}");
                             if (!MeshCache.TryGetValue(MeshName, out var Mesh))
                             {
-                                Mesh = MeshCache[MeshName] = new Mesh();
-                                Mesh.LoadMesh(File.ReadAllBytes(path));
-                            }
+                            Mesh = MeshCache[MeshName] = new Mesh();
+                            Mesh.LoadMesh(File.ReadAllBytes(path));
+                        }
 
                         }
                 }
