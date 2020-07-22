@@ -76,7 +76,14 @@ namespace H3VR.GunModelLoader
                             if (!MeshCache.TryGetValue(MeshName, out var Mesh))
                             {
                             //Mesh = MeshCache[MeshName] = new Mesh();
-                            AssetBundle.LoadFromFile(path);
+                            var meshAssetBundle = AssetBundle.LoadFromFile(path);
+                            var listOfAssetNames = meshAssetBundle.GetAllAssetNames();
+                            foreach (var assetNames in listOfAssetNames)
+                            {
+
+                                Logger.LogDebug($"LOADED ASSETS: {assetNames}");
+
+                            }
                         }
 
                         }
