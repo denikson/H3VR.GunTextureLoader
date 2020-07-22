@@ -75,8 +75,8 @@ namespace H3VR.GunModelLoader
                             Logger.LogDebug($"Loading {path}");
                             if (!MeshCache.TryGetValue(MeshName, out var Mesh))
                             {
-                            Mesh = MeshCache[MeshName] = new Mesh();
-                            Mesh.LoadMesh(File.ReadAllBytes(path));
+                            //Mesh = MeshCache[MeshName] = new Mesh();
+                            AssetBundle.LoadFromFile(path);
                         }
 
                         }
