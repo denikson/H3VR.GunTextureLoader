@@ -1,65 +1,128 @@
 ﻿<?xml version="1.0" encoding="utf-8"?>
 <Project ToolsVersion="4.0" DefaultTargets="Build" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
-    <Import Project="$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props" Condition="Exists('$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props')" />
-    <PropertyGroup>
-        <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
-        <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
-        <ProjectGuid>{58404573-934C-4C93-A4F7-15C923A1FABD}</ProjectGuid>
-        <OutputType>Library</OutputType>
-        <AppDesignerFolder>Properties</AppDesignerFolder>
-        <RootNamespace>H3VR.GunTextureLoader</RootNamespace>
-        <AssemblyName>H3VR.GunTextureLoader</AssemblyName>
-        <TargetFrameworkVersion>v3.5</TargetFrameworkVersion>
-        <FileAlignment>512</FileAlignment>
-    </PropertyGroup>
-    <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
-        <PlatformTarget>AnyCPU</PlatformTarget>
-        <DebugSymbols>true</DebugSymbols>
-        <DebugType>full</DebugType>
-        <Optimize>false</Optimize>
-        <OutputPath>../bin</OutputPath>
-        <DefineConstants>DEBUG;TRACE</DefineConstants>
-        <ErrorReport>prompt</ErrorReport>
-        <WarningLevel>4</WarningLevel>
-    </PropertyGroup>
-    <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|AnyCPU' ">
-        <PlatformTarget>AnyCPU</PlatformTarget>
-        <DebugType>none</DebugType>
-        <Optimize>true</Optimize>
-        <OutputPath>../bin</OutputPath>
-        <DefineConstants>TRACE</DefineConstants>
-        <ErrorReport>prompt</ErrorReport>
-        <WarningLevel>4</WarningLevel>
-    </PropertyGroup>
-    <ItemGroup>
-        <Reference Include="BepInEx, Version=5.2.0.0, Culture=neutral, PublicKeyToken=null">
-          <HintPath>..\lib\BepInEx.dll</HintPath>
-          <Private>False</Private>
-        </Reference>
-        <Reference Include="System" />
-        <Reference Include="System.Core" />
-        <Reference Include="System.Data" />
-        <Reference Include="System.Xml" />
-        <Reference Include="UnityEngine, Version=0.0.0.0, Culture=neutral, PublicKeyToken=null">
-          <HintPath>..\lib\UnityEngine.dll</HintPath>
-          <Private>False</Private>
-        </Reference>
-        <Reference Include="XUnity.ResourceRedirector, Version=1.1.2.0, Culture=neutral, PublicKeyToken=null">
-          <HintPath>..\lib\XUnity.ResourceRedirector.dll</HintPath>
-          <Private>False</Private>
-        </Reference>
-    </ItemGroup>
-    <ItemGroup>
-        <Compile Include="GunTextureLoader.cs" />
-        <Compile Include="Properties\AssemblyInfo.cs" />
-    </ItemGroup>
-    <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
-    <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
+  <Import Project="$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props" Condition="Exists('$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props')" />
+  <PropertyGroup>
+    <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
+    <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
+    <ProjectGuid>{58404573-934C-4C93-A4F7-15C923A1FABD}</ProjectGuid>
+    <OutputType>Library</OutputType>
+    <AppDesignerFolder>Properties</AppDesignerFolder>
+    <RootNamespace>H3VR.GunTextureLoader</RootNamespace>
+    <AssemblyName>H3VR.GunTextureLoader</AssemblyName>
+    <TargetFrameworkVersion>v3.5</TargetFrameworkVersion>
+    <FileAlignment>512</FileAlignment>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
+    <PlatformTarget>AnyCPU</PlatformTarget>
+    <DebugSymbols>true</DebugSymbols>
+    <DebugType>full</DebugType>
+    <Optimize>false</Optimize>
+    <OutputPath>../bin</OutputPath>
+    <DefineConstants>DEBUG;TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|AnyCPU' ">
+    <PlatformTarget>AnyCPU</PlatformTarget>
+    <DebugType>none</DebugType>
+    <Optimize>true</Optimize>
+    <OutputPath>../bin</OutputPath>
+    <DefineConstants>TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+  </PropertyGroup>
+  <ItemGroup>
+    <Reference Include="0Harmony">
+      <HintPath>..\..\H3VRrichPresence\libs\0Harmony.dll</HintPath>
+    </Reference>
+    <Reference Include="AmplifyBloom">
+      <HintPath>..\..\H3VRrichPresence\libs\AmplifyBloom.dll</HintPath>
+    </Reference>
+    <Reference Include="AmplifyColor">
+      <HintPath>..\..\H3VRrichPresence\libs\AmplifyColor.dll</HintPath>
+    </Reference>
+    <Reference Include="Assembly-CSharp">
+      <HintPath>..\..\H3VRrichPresence\libs\Assembly-CSharp.dll</HintPath>
+    </Reference>
+    <Reference Include="Assembly-CSharp-firstpass">
+      <HintPath>..\..\H3VRrichPresence\libs\Assembly-CSharp-firstpass.dll</HintPath>
+    </Reference>
+    <Reference Include="Assembly-UnityScript">
+      <HintPath>..\..\H3VRrichPresence\libs\Assembly-UnityScript.dll</HintPath>
+    </Reference>
+    <Reference Include="BepInEx, Version=5.2.0.0, Culture=neutral, PublicKeyToken=null">
+      <HintPath>..\..\H3VRrichPresence\libs\BepInEx.dll</HintPath>
+      <Private>False</Private>
+    </Reference>
+    <Reference Include="BepInEx.Harmony">
+      <HintPath>..\..\H3VRrichPresence\libs\BepInEx.Harmony.dll</HintPath>
+    </Reference>
+    <Reference Include="BepInEx.Preloader">
+      <HintPath>..\..\H3VRrichPresence\libs\BepInEx.Preloader.dll</HintPath>
+    </Reference>
+    <Reference Include="DinoFracture">
+      <HintPath>..\..\H3VRrichPresence\libs\DinoFracture.dll</HintPath>
+    </Reference>
+    <Reference Include="ES2">
+      <HintPath>..\..\H3VRrichPresence\libs\ES2.dll</HintPath>
+    </Reference>
+    <Reference Include="Mono.Cecil">
+      <HintPath>..\..\H3VRrichPresence\libs\Mono.Cecil.dll</HintPath>
+    </Reference>
+    <Reference Include="Mono.Cecil.Mdb">
+      <HintPath>..\..\H3VRrichPresence\libs\Mono.Cecil.Mdb.dll</HintPath>
+    </Reference>
+    <Reference Include="Mono.Cecil.Pdb">
+      <HintPath>..\..\H3VRrichPresence\libs\Mono.Cecil.Pdb.dll</HintPath>
+    </Reference>
+    <Reference Include="Mono.Cecil.Rocks">
+      <HintPath>..\..\H3VRrichPresence\libs\Mono.Cecil.Rocks.dll</HintPath>
+    </Reference>
+    <Reference Include="Mono.Security">
+      <HintPath>..\..\H3VRrichPresence\libs\Mono.Security.dll</HintPath>
+    </Reference>
+    <Reference Include="MonoMod.RuntimeDetour">
+      <HintPath>..\..\H3VRrichPresence\libs\MonoMod.RuntimeDetour.dll</HintPath>
+    </Reference>
+    <Reference Include="MonoMod.Utils">
+      <HintPath>..\..\H3VRrichPresence\libs\MonoMod.Utils.dll</HintPath>
+    </Reference>
+    <Reference Include="MoodkieSecurity">
+      <HintPath>..\..\H3VRrichPresence\libs\MoodkieSecurity.dll</HintPath>
+    </Reference>
+    <Reference Include="System" />
+    <Reference Include="System.Core" />
+    <Reference Include="System.Data" />
+    <Reference Include="System.Xml" />
+    <Reference Include="UnityEngine, Version=0.0.0.0, Culture=neutral, PublicKeyToken=null">
+      <HintPath>..\..\H3VRrichPresence\libs\UnityEngine.dll</HintPath>
+      <Private>False</Private>
+    </Reference>
+    <Reference Include="UnityEngine.Networking">
+      <HintPath>..\..\H3VRrichPresence\libs\UnityEngine.Networking.dll</HintPath>
+    </Reference>
+    <Reference Include="XUnity.Common">
+      <HintPath>..\lib\XUnity.Common.dll</HintPath>
+    </Reference>
+    <Reference Include="XUnity.ResourceRedirector, Version=1.1.2.0, Culture=neutral, PublicKeyToken=null">
+      <HintPath>..\lib\XUnity.ResourceRedirector.dll</HintPath>
+      <Private>False</Private>
+    </Reference>
+    <Reference Include="XUnity.ResourceRedirector.BepIn-5x">
+      <HintPath>..\lib\XUnity.ResourceRedirector.BepIn-5x.dll</HintPath>
+    </Reference>
+  </ItemGroup>
+  <ItemGroup>
+    <Compile Include="GunModelLoader.cs" />
+    <Compile Include="GunTextureLoader.cs" />
+    <Compile Include="Properties\AssemblyInfo.cs" />
+  </ItemGroup>
+  <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
+  <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
          Other similar extension points exist, see Microsoft.Common.targets.
     <Target Name="BeforeBuild">
     </Target>
     <Target Name="AfterBuild">
     </Target>
     -->
-
 </Project>

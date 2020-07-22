@@ -1,5 +1,8 @@
 ﻿
 Microsoft Visual Studio Solution File, Format Version 12.00
+# Visual Studio Version 16
+VisualStudioVersion = 16.0.30204.135
+MinimumVisualStudioVersion = 10.0.40219.1
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "H3VR.GunTextureLoader", "H3VR.GunTextureLoader\H3VR.GunTextureLoader.csproj", "{58404573-934C-4C93-A4F7-15C923A1FABD}"
 EndProject
 Global
@@ -12,5 +15,11 @@ Global
 		{58404573-934C-4C93-A4F7-15C923A1FABD}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{58404573-934C-4C93-A4F7-15C923A1FABD}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{58404573-934C-4C93-A4F7-15C923A1FABD}.Release|Any CPU.Build.0 = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+	GlobalSection(ExtensibilityGlobals) = postSolution
+		SolutionGuid = {A00E2E63-DFEA-4DB9-A677-7E2CD98AC5DB}
 	EndGlobalSection
 EndGlobal
